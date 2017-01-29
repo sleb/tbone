@@ -8,7 +8,7 @@ Resources:
       Handler: tbone.TboneSpeechletRequestStreamHandler
       Runtime: java8
       CodeUri: .
-      Description: ''
+      Description: 'Backs the Sad T-Bone Alexa skill'
       MemorySize: 512
       Timeout: 15
       Role: 'arn:aws:iam::937638153365:role/service-role/tbone-prod'
