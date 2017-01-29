@@ -1,0 +1,11 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - sh ./gradlew --no-daemon test shadowJar
+      - aws cloudformation package --template-file sam_template.yml --s3-bucket tbone-builds --output-template-file NewSamTemplate.yaml
+
+artifacts:
+  files:
+    - NewSamTemplate.yaml
