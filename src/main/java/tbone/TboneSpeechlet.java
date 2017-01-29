@@ -20,7 +20,7 @@ public class TboneSpeechlet implements Speechlet {
     @Override
     public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException {
         log.info(
-            "Session started requestId={}, userId={}, sessionId={}",
+            "onSessionStarted requestId={}, userId={}, sessionId={}",
             request.getRequestId(),
             session.getUser().getUserId(),
             session.getSessionId());
@@ -28,6 +28,12 @@ public class TboneSpeechlet implements Speechlet {
 
     @Override
     public SpeechletResponse onLaunch(LaunchRequest request, Session session) throws SpeechletException {
+        log.info(
+            "onLaunch requestId={}, userId={}, sessionId={}",
+            request.getRequestId(),
+            session.getUser().getUserId(),
+            session.getSessionId());
+
         PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
         outputSpeech.setText("Welcome to the Sad T-Bone. Try asking me to play a Wah Wah");
         return newTellResponse(outputSpeech);
@@ -35,6 +41,13 @@ public class TboneSpeechlet implements Speechlet {
 
     @Override
     public SpeechletResponse onIntent(IntentRequest request, Session session) throws SpeechletException {
+
+        log.info(
+            "onIntent intent={}, requestId={}, userId={}, sessionId={}",
+            request.getIntent().getName(),
+            request.getRequestId(),
+            session.getUser().getUserId(),
+            session.getSessionId());
 
         switch (request.getIntent().getName()) {
             case "PlayWaWaIntent":
