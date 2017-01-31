@@ -12,8 +12,10 @@ import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.SpeechletException;
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
+import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SsmlOutputSpeech;
 
+import static com.amazon.speech.speechlet.SpeechletResponse.newAskResponse;
 import static com.amazon.speech.speechlet.SpeechletResponse.newTellResponse;
 
 public class TboneSpeechlet implements Speechlet {
@@ -34,9 +36,17 @@ public class TboneSpeechlet implements Speechlet {
             session.getUser().getUserId(),
             session.getSessionId());
 
-        PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-        outputSpeech.setText("Welcome to the Sad T-Bone. Try asking me to play a Wah Wah");
-        return newTellResponse(outputSpeech);
+        String hint = "Try asking me to play a Wah Wah";
+
+
+        PlainTextOutputSpeech promptOutputSpeech = new PlainTextOutputSpeech();
+        promptOutputSpeech.setText("Welcome to the Sad T-Bone. " + hint);
+
+        Reprompt reprompt = new Reprompt();
+        PlainTextOutputSpeech hintOutputSpeech = new PlainTextOutputSpeech();
+        hintOutputSpeech.setText(hint);
+
+        return newAskResponse(promptOutputSpeech, reprompt);
     }
 
     @Override
