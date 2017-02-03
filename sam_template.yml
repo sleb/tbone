@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
-Description: An AWS Serverless Specification template describing your function.
+Description: Sad T-Bone Alexa skill
 Resources:
   tbonePlayWaWa:
     Type: 'AWS::Serverless::Function'
@@ -8,10 +8,9 @@ Resources:
       Handler: tbone.TboneSpeechletRequestStreamHandler
       Runtime: java8
       CodeUri: ./build/libs/tbone-all.jar
-      Description: 'Backs the Sad T-Bone Alexa skill'
       MemorySize: 512
       Timeout: 15
-      Role: 'arn:aws:iam::937638153365:role/service-role/tbone-prod'
+      Role: 'arn:aws:iam::937638153365:role/tbone-skill-lambda-role'
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
