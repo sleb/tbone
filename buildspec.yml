@@ -8,4 +8,4 @@ phases:
 
 artifacts:
   files:
-    - NewSamTemplate.yaml
+    - new_sam_template.yml
