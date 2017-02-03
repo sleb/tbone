@@ -84,7 +84,7 @@ public class TboneSpeechlet implements Speechlet {
         repromptOutputSpeech.setText("Try asking me to play a fail sound");
         Reprompt reprompt = new Reprompt();
         reprompt.setOutputSpeech(repromptOutputSpeech);
-        
+
         return newAskResponse(outputSpeech, reprompt);
     }
 
