@@ -35,6 +35,7 @@ dependencies {
     compile 'org.eclipse.jetty:jetty-server:9.0.6.v20130930'
     compile 'org.eclipse.jetty:jetty-servlet:9.0.6.v20130930'
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.8.5'
+    compile 'com.amazonaws:aws-lambda-java-log4j:1.0.0'
 
 
     // Use JUnit test framework
