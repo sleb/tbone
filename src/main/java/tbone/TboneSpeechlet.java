@@ -38,7 +38,6 @@ public class TboneSpeechlet implements Speechlet {
 
         String hint = "Try asking me to play a Wah Wah";
 
-
         PlainTextOutputSpeech promptOutputSpeech = new PlainTextOutputSpeech();
         promptOutputSpeech.setText("Welcome to the Sad T-Bone. " + hint);
 
@@ -79,8 +78,14 @@ public class TboneSpeechlet implements Speechlet {
 
     private SpeechletResponse handleHelpIntent() {
         PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
-        outputSpeech.setText("Try asking me to play a fail sound");
-        return newTellResponse(outputSpeech);
+        outputSpeech.setText("You can try asking me to play a fail sound");
+
+        PlainTextOutputSpeech repromptOutputSpeech = new PlainTextOutputSpeech();
+        repromptOutputSpeech.setText("Try asking me to play a fail sound");
+        Reprompt reprompt = new Reprompt();
+        reprompt.setOutputSpeech(repromptOutputSpeech);
+        
+        return newAskResponse(outputSpeech, reprompt);
     }
 
     private SpeechletResponse handlePlayWaWaIntent() {
