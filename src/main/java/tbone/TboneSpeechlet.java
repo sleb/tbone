@@ -92,7 +92,7 @@ public class TboneSpeechlet implements Speechlet {
         SsmlOutputSpeech outputSpeech = new SsmlOutputSpeech();
         outputSpeech.setSsml(
             "<speak>" +
-            "  <audio src=\"https://s3.amazonaws.com/tbone-skill/audio/trombone.mp3\" />" +
+            "  <audio src=\"http://d3bopkxu4xdpre.cloudfront.net/audio/trombone.mp3\" />" +
             "</speak>");
 
         return newTellResponse(outputSpeech);
