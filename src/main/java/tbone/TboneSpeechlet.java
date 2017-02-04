@@ -46,6 +46,7 @@ public class TboneSpeechlet implements Speechlet {
         Reprompt reprompt = new Reprompt();
         PlainTextOutputSpeech hintOutputSpeech = new PlainTextOutputSpeech();
         hintOutputSpeech.setText(hint);
+        reprompt.setOutputSpeech(hintOutputSpeech);
 
         SpeechletResponse response = newAskResponse(promptOutputSpeech, reprompt);
         try {
