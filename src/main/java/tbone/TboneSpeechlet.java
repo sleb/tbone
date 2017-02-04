@@ -104,7 +104,7 @@ public class TboneSpeechlet implements Speechlet {
 
     @Override
     public void onSessionEnded(SessionEndedRequest request, Session session) throws SpeechletException {
-
+        log.info("onSessionEnded: sessionId={}", session.getSessionId());
     }
 
     private static final Logger log = LoggerFactory.getLogger(TboneSpeechlet.class);
