@@ -1,7 +1,5 @@
 package tbone;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,17 +41,14 @@ public class TboneSpeechlet implements Speechlet {
         PlainTextOutputSpeech promptOutputSpeech = new PlainTextOutputSpeech();
         promptOutputSpeech.setText("Welcome to the Sad T-Bone. " + hint);
 
-        Reprompt reprompt = new Reprompt();
         PlainTextOutputSpeech hintOutputSpeech = new PlainTextOutputSpeech();
         hintOutputSpeech.setText(hint);
+
+        Reprompt reprompt = new Reprompt();
         reprompt.setOutputSpeech(hintOutputSpeech);
 
         SpeechletResponse response = newAskResponse(promptOutputSpeech, reprompt);
-        try {
-            log.info("sending response: {}", new ObjectMapper().writeValueAsString(response));
-        } catch (JsonProcessingException e) {
-            log.error("error serializing response", e);
-        }
+        log.info("should end session is '{}'", response.getShouldEndSession());
         return response;
     }
 
