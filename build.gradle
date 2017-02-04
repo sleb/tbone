@@ -23,20 +23,18 @@ repositories {
 }
 
 dependencies {
-    // The production code uses Guava
-    compile 'com.google.guava:guava:20.0'
     compile 'com.amazon.alexa:alexa-skills-kit:1.1.2'
-    compile 'org.slf4j:slf4j-api:1.7.10'
-    compile 'org.slf4j:slf4j-log4j12:1.7.22'
-    compile 'com.amazonaws:aws-lambda-java-core:1.1.0'
+    compile 'com.amazonaws:aws-lambda-java-core:1.0.0'
+    compile 'com.amazonaws:aws-java-sdk-dynamodb:1.9.40'
+
     compile 'log4j:log4j:1.2.17'
     compile 'org.apache.commons:commons-lang3:3.3.2'
     compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
     compile 'org.eclipse.jetty:jetty-server:9.0.6.v20130930'
     compile 'org.eclipse.jetty:jetty-servlet:9.0.6.v20130930'
-    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.8.5'
-    compile 'com.amazonaws:aws-lambda-java-log4j:1.0.0'
+    compile 'org.slf4j:slf4j-api:1.7.10'
 
+    compile 'com.google.guava:guava:21.0'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
