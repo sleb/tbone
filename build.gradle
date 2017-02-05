@@ -35,6 +35,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.10'
 
     compile 'com.google.guava:guava:21.0'
+    compile 'org.cfg4j:cfg4j-core:4.4.0'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
