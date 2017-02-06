@@ -1,5 +1,5 @@
 audio:
-  prefix: https://d3bopkxu4xdpre.cloudfront.net/audio/
+  prefix: https://d3bopkxu4xdpre.cloudfront.net/audio
   fileNames:
     - audio_1.mp3
     - audio_2.mp3
