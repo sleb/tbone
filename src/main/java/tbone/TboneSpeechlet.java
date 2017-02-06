@@ -1,24 +1,27 @@
 package tbone;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.amazon.speech.speechlet.IntentRequest;
-import com.amazon.speech.speechlet.LaunchRequest;
-import com.amazon.speech.speechlet.Session;
-import com.amazon.speech.speechlet.SessionEndedRequest;
-import com.amazon.speech.speechlet.SessionStartedRequest;
-import com.amazon.speech.speechlet.Speechlet;
-import com.amazon.speech.speechlet.SpeechletException;
-import com.amazon.speech.speechlet.SpeechletResponse;
+import com.amazon.speech.speechlet.*;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SsmlOutputSpeech;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import tbone.config.AudioConfig;
+import tbone.config.Config;
+
+import java.util.List;
+import java.util.Random;
 
 import static com.amazon.speech.speechlet.SpeechletResponse.newAskResponse;
 import static com.amazon.speech.speechlet.SpeechletResponse.newTellResponse;
 
 public class TboneSpeechlet implements Speechlet {
+    private final Config mConfig;
+
+    public TboneSpeechlet(Config config) {
+        mConfig = config;
+    }
+
     @Override
     public void onSessionStarted(SessionStartedRequest request, Session session) throws SpeechletException {
         log.info(
@@ -93,11 +96,18 @@ public class TboneSpeechlet implements Speechlet {
     }
 
     private SpeechletResponse handlePlayWaWaIntent() {
+        AudioConfig audioConfig = mConfig.getAudioConfig();
+        List<String> fileNames = audioConfig.fileNames();
+        Random random = new Random();
+        int i = random.nextInt(fileNames.size());
         SsmlOutputSpeech outputSpeech = new SsmlOutputSpeech();
         outputSpeech.setSsml(
-            "<speak>" +
-            "  <audio src=\"https://d3bopkxu4xdpre.cloudfront.net/audio/trombone.mp3\" />" +
-            "</speak>");
+                String.format(
+                        "<speak>\n" +
+                        "  <audio src=\"%s/%s\" />\n" +
+                        "</speak>\n",
+                        audioConfig.prefix(),
+                        fileNames.get(i)));
 
         return newTellResponse(outputSpeech);
     }
