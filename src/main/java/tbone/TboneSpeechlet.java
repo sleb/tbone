@@ -18,7 +18,7 @@ import static com.amazon.speech.speechlet.SpeechletResponse.newTellResponse;
 public class TboneSpeechlet implements Speechlet {
     private final Config mConfig;
 
-    public TboneSpeechlet(Config config) {
+    TboneSpeechlet(Config config) {
         mConfig = config;
     }
 
