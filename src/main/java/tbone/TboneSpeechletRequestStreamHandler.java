@@ -1,7 +1,6 @@
 package tbone;
 
 import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
-import com.google.common.collect.ImmutableSet;
 import org.cfg4j.provider.ConfigurationProvider;
 import org.cfg4j.provider.ConfigurationProviderBuilder;
 import org.cfg4j.source.ConfigurationSource;
@@ -18,11 +17,14 @@ import java.util.Collections;
 public class TboneSpeechletRequestStreamHandler extends SpeechletRequestStreamHandler {
     private static final Logger log = LoggerFactory.getLogger(TboneSpeechletRequestStreamHandler.class);
     private static final Config config = initializeConfig();
-    private static final ImmutableSet<String> APPLICATION_IDS =
-            ImmutableSet.copyOf(config.getApplicationConfig().supportedIds());
+
+    public static void main(String[] args) {
+        new TboneSpeechletRequestStreamHandler();
+        System.out.println(config.getApplicationConfig().supportedIds());
+    }
 
     public TboneSpeechletRequestStreamHandler() {
-        super(new TboneSpeechlet(config), APPLICATION_IDS);
+        super(new TboneSpeechlet(config), config.getApplicationConfig().supportedIds());
     }
 
     private static Config initializeConfig() {

@@ -1,7 +1,7 @@
 package tbone.config;
 
-import java.util.List;
+import java.util.Set;
 
 public interface ApplicationConfig {
-    List<String> supportedIds();
+    Set<String> supportedIds();
 }
