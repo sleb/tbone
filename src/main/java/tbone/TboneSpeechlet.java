@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import tbone.config.AudioConfig;
 import tbone.config.Config;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +19,7 @@ import static com.amazon.speech.speechlet.SpeechletResponse.newTellResponse;
 public class TboneSpeechlet implements Speechlet {
     private final Config mConfig;
 
+    @Inject
     TboneSpeechlet(Config config) {
         mConfig = config;
     }
