@@ -18,6 +18,8 @@ import java.util.Collections;
 public class TboneSpeechletRequestStreamHandler extends SpeechletRequestStreamHandler {
     private static final Logger log = LoggerFactory.getLogger(TboneSpeechletRequestStreamHandler.class);
     private static final Config config = initializeConfig();
+    private static final ImmutableSet<String> APPLICATION_IDS =
+            ImmutableSet.copyOf(config.getApplicationConfig().supportedIds());
 
     public TboneSpeechletRequestStreamHandler() {
         super(new TboneSpeechlet(config), APPLICATION_IDS);
@@ -34,7 +36,4 @@ public class TboneSpeechletRequestStreamHandler extends SpeechletRequestStreamHa
 
         return new DefaultConfig(configurationProvider);
     }
-
-    private static final ImmutableSet<String> APPLICATION_IDS =
-            ImmutableSet.copyOf(config.getApplicationConfig().supportedIds());
 }

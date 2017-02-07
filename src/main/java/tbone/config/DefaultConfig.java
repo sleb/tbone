@@ -14,7 +14,7 @@ public class DefaultConfig implements Config {
 
     @Override
     public ApplicationConfig getApplicationConfig() {
-        return null;
+        return mApplicationConfig;
     }
 
     @Override
