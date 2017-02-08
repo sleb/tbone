@@ -7,18 +7,11 @@ import javax.inject.Singleton;
 
 @Singleton
 public class DefaultConfig implements Config {
-    private ApplicationConfig mApplicationConfig;
-    private AudioConfig mAudioConfig;
+    private final AudioConfig mAudioConfig;
 
     @Inject
     public DefaultConfig(ConfigurationProvider configurationProvider) {
-        mApplicationConfig = configurationProvider.bind("application", ApplicationConfig.class);
         mAudioConfig = configurationProvider.bind("audio", AudioConfig.class);
-    }
-
-    @Override
-    public ApplicationConfig getApplicationConfig() {
-        return mApplicationConfig;
     }
 
     @Override
